@@ -9,10 +9,10 @@
             </nav>
             <div class="masthead_user">
                 <% if !user_signed_in? %>
-                    <a <%= link_to "Sign In", new_user_session_path %></a>
-                    <a <%= link_to "Sign Up", new_user_registration_path %></a>
+                    <a <%= link_to "Sign In", signin_path %></a>
+                    <a <%= link_to "Sign Up", signup_path %></a>
                 <% else %>
-                    <a <%= link_to "Log Out", destroy_user_session_path, method:"delete" %></a>
+                    <a <%= link_to "Log Out", logout_path, method:"delete" %></a>
                 <% end %>
             </div>
             
