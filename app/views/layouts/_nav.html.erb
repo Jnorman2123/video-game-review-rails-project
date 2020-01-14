@@ -1,0 +1,95 @@
+<div class="masthead">
+    <div class="masthead_strip">
+        <div class="container row">
+            <nav class="masthead_systems">
+                <a href="/3ds">3DS</a>
+                <a class="notab" href="/android">Android</a>
+                <a class="notab" href="/iphone">iOS</a>
+                <a href="/pc">PC</a>
+                <a class="notab" href="/ps3">PS3</a>
+                <a href="/ps4">PS4</a>
+                <a href="/switch">Switch</a>
+                <a class="notab" href="/vita">Vita</a>
+                <a class="notab" href="/xbox360">Xbox 360</a>
+                <a href="/xboxone">Xbox One</a>              
+            </nav>
+            <div class="masthead_user" data-step="9" data-intro="Now that you've seen what we have to offer, you can register an account for free to have complete access to all of our great community features. If you already have an account, you can log in here as well.">
+	            <a href="/user/login" onclick="return show_login();"><i class="fa fa-key nouser"></i>Log In</a>
+	            <a href="/user/register" onclick="return show_signup('header');" class="nouser">Sign Up</a>
+            </div>
+            <div id="login_dialog">
+                <div class="pod">
+                    <div class="head"> 
+                        <h2 class="title">Log In to GameFAQs</h2>
+                    </div>
+	                <div class="body">
+                        <form class="login" id="login" method="post" action="/user/login" onsubmit="return submit_login();">
+                            <input type="hidden" name="path" value="/">
+                            <input class="hidden" type="hidden" name="key" value="5ca9023c">
+	                    <table class="contrib">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input class="text login_email" id="login_email" type="text" name="EMAILADDR" maxlength="90" placeholder="Username/Email">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input class="text login_password" id="login_password" type="password" name="PASSWORD" maxlength="64" placeholder="Password">
+                                    </td>
+                                </tr>	
+                                <tr>
+                                    <td>
+                                        <input id="kmli" type="checkbox" name="kmli" checked="CHECKED"><label for="kmli"> Keep me logged in on this device</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>	
+                                        <input class="btn btn_primary btn_wide login_submit" id="login_submit" type="submit" value="login">	
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>	
+                                        <a href="/user/recover">Forgot your username or password?</a><br><br>
+                                        <a href="/user/register" onclick="$('#login_dialog').dialog('close'); return show_signup('login_box');">Don't have an account? Sign up for free!</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>	
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="masthead_main container row">
+        <div class="masthead_logo_search">
+            <div class="masthead_logo" data-step="1" data-intro="Welcome to GameFAQs, your one-stop site for gaming guides, cheats, and more. If you're ever lost on the site, you can click this logo to get back to the home page at any time.">
+                <a href="/">GameFAQs</a>
+            </div>
+                <div class="masthead_search">
+                    <form class="search" method="get" action="/search" data-step="2" data-intro="You can use this box to search our extensive database of games. There are quick links to all of the content we have for the game directly from the search results.">
+                        <fieldset>
+                            <button type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            <input type="text" id="searchtextbox" name="game" value="" class="search" placeholder="Search Game Titles">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        <div class="masthead_nav">
+            <nav>
+                <a href="/answers" data-step="3" data-intro="If you have a specific question for a game, you can ask it here and see if our users can answer it for you.">Answers</a>
+                <a href="/boards" data-step="4" data-intro="We have a unique message board for every version of every game in our extensive database, combining into the largest gaming message board on the Net.">Boards</a>
+                <a class="navtrim" href="/community" data-step="5" data-intro="GameFAQs wouldn't be what it is without our active community of users contributing content and conversations. See what your friends are up to, or browse through various categories of users like our top contributors here.">Community</a>
+                <a class="navtrim" href="/contribute" data-step="6" data-intro="If you'd like to contribute your own guides, reviews, or cheats for a game, this is the place to go. We accept many other types of content as well from trivia to game credits. You can find a full list and all of the guidelines for submitting content here.">Contribute</a>
+                <a class="navtrim" href="/games" data-step="7" data-intro="Explore our comprehensive library of games. Find out what's popular on the site or see how we rank games based on difficulty, length, and more.">Games</a>
+                <a class="notab" href="/new" data-step="8" data-intro="If you're wondering what games are coming out soon, or what content we've posted recently, this is the place to look.">What’s New</a>
+                <a class="search_link" onclick="topnav_show_search();">
+                    <i class="fa fa-2x fa-search" title="Search"></i>
+                </a>
+            </nav>
+        </div>
+    </div>
+</div>
