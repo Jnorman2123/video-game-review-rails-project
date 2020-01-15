@@ -1,10 +1,61 @@
-<h1><%= @game.title + " Show Page" %></h1>
-<br>
-<h2><%="Available on " + @game.console %>
-<br>
-<h2><%="Genre: " + @game.genre %>
-<br>
-<h2><%= image_tag @game.img_url %>
-<br>
-<h2><%="Released " + "#{@game.release_date}" %>
-<br>
+<div class="span8">
+    <header class="page-header">
+        <div class="header_split">
+            <div class="header_left">
+                <%= image_tag @game.img_url %>
+            </div>
+            <div class="header_right">
+                <h1 class="page-title"><%= @game.title %></h1>
+                <h3 class="platform-title">                
+                    <span class="header_more" style="cursor: pointer"><%= @game.console %> </span>
+                </h3>
+            </div>
+        </div>
+    </header>
+<div class="pod">
+    <div class="pod_split pod_gamespace pod_gamespace_home_mygames">
+        <div class="pod">
+            <div class="head">
+                <h2 class="title">Most Recent Reviews</h2>
+            </div>
+            <div class="body">
+                <table class="qna_table qresults board">
+                    <tbody>
+                        <tr>
+                            <% @game.reviews.each do |review| %>
+                                <td class="question">
+                                    <%= link_to review.content, games_review_path(review) %>
+                                </td>
+                            <% end %>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pod_split pod_gamespace pod_gamespace_home_mygames">
+        <div class="head">
+            <h2 class="title">User Ratings</h2>
+        </div>
+        <div class="body">
+            <fieldset id="js_mygames_own" class="mygames_section mygames_own" data-name="own" data-type="gamerater" itemscope="">
+                <div class="pod_split gamerater_label">
+                    <div class="subsection-title">Owned:<br>
+                        <div class="rating mygames_stats_own mygames_stat4">
+                            <a href="/switch/189707-the-legend-of-zelda-breath-of-the-wild/stats#own">9606 users</a>
+                        </div>
+                    </div>
+                </div>             
+            </fieldset>
+            <fieldset id="js_mygames_rate" class="mygames_section mygames_rate" data-name="rate" data-type="gamerater" itemscope="">
+                <div class="pod_split gamerater_label">
+                    <div class="subsection-title">Rating:<br>
+                        <div class="rating mygames_stats_rate mygames_stat9">
+                            <a href="/switch/189707-the-legend-of-zelda-breath-of-the-wild/stats#rate">4.58 / 5</a>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
