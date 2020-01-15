@@ -2,10 +2,9 @@
     <div class="masthead_strip">
         <div class="container row">
             <nav class="masthead_systems">
-                <a class="notab" href="/ps4">Playstation 4</a>
-                <a class="notab" href="/xboxone">Xbox One</a>
-                <a class="notab" href="/switch">Switch</a>
-                <a class="notab" href="/pc">PC</a>             
+                <% if current_user.admin %>
+                    <%= link_to "Create Game", new_game_path %> 
+                <% end %>         
             </nav>
             <div class="masthead_user">
                 <% if !user_signed_in? %>
@@ -21,18 +20,6 @@
         </div>
     </div>
     <div class="masthead_main container row">
-        <div class="masthead_logo_search">
-            <div class="masthead_search">
-                <form class="search" method="get" action="/search">
-                    <fieldset>
-                        <button type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        <input type="text" id="searchtextbox" name="game" value="" class="search" placeholder="Search Game Titles">
-                    </fieldset>
-                </form>
-            </div>
-        </div>
         <div class="masthead_nav">
             <nav>
                 <a class="navtrim" <%= link_to "Home", root_path %></a>
