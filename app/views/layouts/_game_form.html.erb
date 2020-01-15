@@ -12,7 +12,7 @@
     <%= f.text_field :img_url %>
     <br>
     <%= f.label :release_date %>
-    <%= f.date_select :release_date, start_year: 1980, end_year: 2020, order: [:day, :month, :year] %>
+    <%= f.date_select :release_date, start_year: 1980, end_year: 2020, order: [:month, :day, :year] %>
     <br>
     <%= f.submit %>
 <% end %>

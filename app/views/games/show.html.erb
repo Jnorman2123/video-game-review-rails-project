@@ -1,1 +1,10 @@
 <h1><%= @game.title + " Show Page" %></h1>
+<br>
+<h2><%="Available on " + @game.console %>
+<br>
+<h2><%="Genre: " + @game.genre %>
+<br>
+<h2><%= image_tag @game.img_url %>
+<br>
+<h2><%="Released " + "#{@game.release_date}" %>
+<br>
