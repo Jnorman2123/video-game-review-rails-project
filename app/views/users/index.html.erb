@@ -1,0 +1,6 @@
+<h1>Users Index</h1> 
+
+<% @users.each do |user| %> 
+    <%= link_to user.username, user_path(user)%>
+    <%= reviews_posted(user) %><br>
+<% end %>
