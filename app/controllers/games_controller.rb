@@ -34,6 +34,7 @@ class GamesController < ApplicationController
 
     def show 
         @game = set_game
+        @review = @game.reviews.new
     end  
 
     def destroy 

@@ -32,4 +32,10 @@ class ReviewsController < ApplicationController
     def destroy 
 
     end 
+
+    private 
+
+    def review_params 
+        params.require(:reviews).permit(:content, :rating, :game_id, :user_id)
+    end 
 end 
