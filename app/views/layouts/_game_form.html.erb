@@ -2,9 +2,10 @@
     <%= f.label :title %>
     <%= f.text_field :title %> 
     <br>
-    <%= f.label :console %>
-    <%= f.text_field :console %>
-    <br>
+    <%= f.fields_for :consoles do |con| 
+        <%= con.label :name %>
+        <%= con.text_field :name %>
+    <% end %>
     <%= f.label :genre %>
     <%= f.text_field :genre %>
     <br>
