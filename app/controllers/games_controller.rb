@@ -33,6 +33,7 @@ class GamesController < ApplicationController
     end  
 
     def show 
+        binding.pry
         @game = set_game
         @review = @game.reviews.new
     end  

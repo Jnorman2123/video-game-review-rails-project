@@ -28,7 +28,7 @@
                         <tr>
                             <% @game.reviews.each do |review| %>
                                 <td class="question">
-                                    <%= link_to review.content, game_review_path(review) %>
+                                    <%= review.content%>
                                 </td>
                             <% end %>
                         </tr>
@@ -38,7 +38,11 @@
             <div class="head">
                 <h2 class="title">Write a new review for this game</h2>
             </div>
-            <%= render '/layouts/review_form' %>
+            <%= form_for @review do |review| %>
+                <%= render partial: '/layouts/review_form', locals: {game_review: review} %>
+                <% review.game_id = @game.id %> 
+                <% review.user_id = current_user.id %>
+            <% end  %>
         </div>
     </div>
     <div class="pod_split pod_gamespace pod_gamespace_home_mygames">

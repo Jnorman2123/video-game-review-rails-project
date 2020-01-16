@@ -1,11 +1,7 @@
-<h1>Write Review For This Game</h1> 
-
-<%= form_for @review do |f| %> 
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <br>
-    <%= f.label :rating %>
-    <%= f.select :rating, (1..10) %>
-    <br>
-    <%= f.submit %>
-<% end %>
+<%= game_review.label :content %>
+<%= game_review.text_area :content %>
+<br>
+<%= game_review.label :rating %>
+<%= game_review.select :rating, (1..10) %>
+<br>
+<%= game_review.submit %>
