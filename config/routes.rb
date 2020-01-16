@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :games do 
-    resources :reviews, only: [:index, :show, ]
-  end   
+    resources :reviews, only: [:new, :create, :edit, :update, :show, :destroy]
+  end  
+  resources :consoles, only: [:show]
+  get '/reviews', to: 'reviews#index' 
   devise_for :users, :controllers => {registrations: 'registrations', omniauth_callbacks: 'callbacks'}
   devise_scope :user do 
     get 'signin', to: 'devise/sessions#new' 
