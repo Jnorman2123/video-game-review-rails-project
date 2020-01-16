@@ -2,10 +2,11 @@
     <%= f.label :title %>
     <%= f.text_field :title %> 
     <br>
-    <%= f.fields_for :consoles do |con| 
-        <%= con.label :name %>
-        <%= con.text_field :name %>
+    <%= f.fields_for :consoles do |console| %>
+        <%= console.label "Console Name" %>
+        <%= console.text_field :name %>
     <% end %>
+    <br>
     <%= f.label :genre %>
     <%= f.text_field :genre %>
     <br>

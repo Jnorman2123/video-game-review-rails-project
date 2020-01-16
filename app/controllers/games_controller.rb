@@ -6,7 +6,7 @@ class GamesController < ApplicationController
 
     def new 
         @game = Game.new
-        3.times.do @game.consoles.build
+        3.times {@game.consoles.build}
     end 
 
     def create 
@@ -48,8 +48,8 @@ class GamesController < ApplicationController
             :title, 
             :genre, 
             :img_url, 
-            :release_date, 
-            console_attributes: [
+            :release_date,
+            consoles_attributes: [
                 :name
             ]
         )

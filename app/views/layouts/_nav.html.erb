@@ -2,7 +2,7 @@
     <div class="masthead_strip">
         <div class="container row">
             <nav class="masthead_systems">
-                <% if current_user.admin %>
+                <% if user_signed_in? && current_user.admin %>
                     <%= link_to "Create Game", new_game_path %> 
                 <% end %>         
             </nav>
