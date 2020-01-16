@@ -6,6 +6,7 @@ class GamesController < ApplicationController
 
     def new 
         @game = Game.new
+        3.times.do @game.consoles.build
     end 
 
     def create 
@@ -43,7 +44,15 @@ class GamesController < ApplicationController
     private 
 
     def game_params 
-        params.require(:game).permit(:title, :console, :genre, :img_url, :release_date)
+        params.require(:game).permit(
+            :title, 
+            :genre, 
+            :img_url, 
+            :release_date, 
+            console_attributes: [
+                :name
+            ]
+        )
     end 
 
     def set_game 
