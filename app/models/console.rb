@@ -1,4 +1,5 @@
 class Console < ApplicationRecord
-    has_and_belongs_to_many :games 
+    has_many :consoles_games
+    has_many :games, through: :consoles_games 
     
 end

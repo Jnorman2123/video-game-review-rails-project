@@ -1,6 +1,7 @@
 class Game < ApplicationRecord
     has_many :reviews 
-    has_and_belongs_to_many :consoles 
+    has_many :consoles_games 
+    has_many :consoles, through: :consoles_games
     has_many :users, through: :reviews 
     accepts_nested_attributes_for :consoles
     validates :title, presence: true, uniqueness: true 
