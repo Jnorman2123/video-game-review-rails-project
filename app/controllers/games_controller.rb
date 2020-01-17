@@ -11,7 +11,6 @@ class GamesController < ApplicationController
     end 
 
     def create 
-        binding.pry
         @game = Game.create(game_params)
 
         if @game.save 
@@ -23,6 +22,8 @@ class GamesController < ApplicationController
 
     def edit 
         @game = set_game
+        @consoles = Console.all
+        3.times {@game.consoles.build}
     end 
 
     def update 
@@ -42,6 +43,7 @@ class GamesController < ApplicationController
     def destroy 
         @game = set_game 
         @game.delete
+        redirect_to games_path
     end 
 
     private 

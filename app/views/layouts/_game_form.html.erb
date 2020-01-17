@@ -1,22 +1,12 @@
-<%= form_for @game do |f| %> 
-    <%= f.label :title %>
-    <%= f.text_field :title %> 
-    <br>
-    <%= f.fields_for :consoles do |console_fields| %>
-        <%= console_fields.label "Select Console" %>
-        <%= console_fields.select(:name , options_from_collection_for_select(@consoles, 'name', 'name'), { include_blank: ""}) %>
-        <br>
-    <% end %>
-    <%= f.label :genre %>
-    <%= f.text_field :genre %>
-    <br>
-    <%= f.label 'Image Url' %>
-    <%= f.text_field :img_url %>
-    <br>
-    <%= f.label :release_date %>
-    <%= f.date_select :release_date, start_year: 1980, end_year: 2020, order: [:month, :day, :year] %>
-    <br>
-    <%= f.submit %>
-<% end %>
+<%= game_form.label :genre %>
+<%= game_form.text_field :genre %>
+<br>
+<%= game_form.label 'Image Url' %>
+<%= game_form.text_field :img_url %>
+<br>
+<%= game_form.label :release_date %>
+<%= game_form.date_select :release_date, start_year: 1980, end_year: 2020, order: [:month, :day, :year] %>
+<br>
+<%= game_form.submit %>
 
 

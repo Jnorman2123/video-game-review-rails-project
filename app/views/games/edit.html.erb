@@ -1,0 +1,9 @@
+<h1>Edit Game</h1> 
+
+<%= form_for @game do |game| %>
+    <%= game.label :title %>
+    <%= game.text_field :title %> 
+    <br>
+    <%= render partial: '/layouts/game_form', locals: {game_form: game} %>
+<% end %>
+

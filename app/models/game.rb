@@ -9,7 +9,6 @@ class Game < ApplicationRecord
     def consoles_attributes=(consoles) 
         consoles.each do |key, value|
             value.each do |k,v|
-                binding.pry
                 if !v.nil? && !v.empty?
                     console = Console.find_by(name: v) 
                     self.consoles << console
