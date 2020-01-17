@@ -42,6 +42,10 @@ class GamesController < ApplicationController
 
     def destroy 
         @game = set_game 
+        @reviews = @game.reviews
+        @reviews.each do |review|
+            review.destroy
+        end
         @game.delete
         redirect_to games_path
     end 

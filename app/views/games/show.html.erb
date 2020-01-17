@@ -55,6 +55,8 @@
     </div>
 </div>
 
-<%= link_to "Edit Game", edit_game_path(@game) %> 
-&nbsp;&nbsp
-<%= link_to "Delete Game", game_path(@game), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+<% if current_user.admin %>
+    <%= link_to "Edit Game", edit_game_path(@game) %> 
+    &nbsp;&nbsp
+    <%= link_to "Delete Game", game_path(@game), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+<% end %>
