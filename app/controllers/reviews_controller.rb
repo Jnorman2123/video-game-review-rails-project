@@ -19,11 +19,16 @@ class ReviewsController < ApplicationController
     end 
 
     def edit 
-
+        @review = Review.find_by(params[:id])
     end 
 
     def update 
-
+        @review = Review.find_by(params[:id])
+        if @review.update(review_params)
+            redirect_to game_path(@review.game_id)
+        else 
+            redirect_to game_review_edit_path(@review)
+        end
     end 
     
     def destroy 

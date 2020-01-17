@@ -13,6 +13,9 @@
             <tbody>
                 <tr>
                     <%= @review.content %>
+                    <%= @review.rating_score %>
+                    <%= @review.user.username %>
+                    <%= link_to "Edit Review", edit_game_review_path(@review) %>
                 </tr>
             </tbody>
         </table>
