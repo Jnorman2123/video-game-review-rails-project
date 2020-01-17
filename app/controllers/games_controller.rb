@@ -6,10 +6,12 @@ class GamesController < ApplicationController
 
     def new 
         @game = Game.new
+        @consoles = Console.all
         3.times {@game.consoles.build}
     end 
 
     def create 
+        binding.pry
         @game = Game.create(game_params)
 
         if @game.save 
@@ -51,7 +53,8 @@ class GamesController < ApplicationController
             :img_url, 
             :release_date,
             consoles_attributes: [
-                :name
+                :name,
+                :id
             ]
         )
     end 

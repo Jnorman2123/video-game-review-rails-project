@@ -2,11 +2,11 @@
     <%= f.label :title %>
     <%= f.text_field :title %> 
     <br>
-    <%= f.fields_for :consoles do |console| %>
-        <%= console.label "Console Name" %>
-        <%= console.text_field :name %>
+    <%= f.fields_for :consoles do |console_fields| %>
+        <%= console_fields.label "Select Existing Console" %>
+        <%= console_fields.select(:name , options_from_collection_for_select(@consoles, 'name', 'name'), { include_blank: ""}) %>
+        <br>
     <% end %>
-    <br>
     <%= f.label :genre %>
     <%= f.text_field :genre %>
     <br>
