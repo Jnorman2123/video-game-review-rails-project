@@ -32,7 +32,9 @@ class ReviewsController < ApplicationController
     end 
     
     def destroy 
-
+        @review = Review.find_by(params[:id])
+        @review.delete 
+        redirect_to game_path(@review.game_id) 
     end 
 
     private 

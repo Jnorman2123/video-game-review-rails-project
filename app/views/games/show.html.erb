@@ -28,7 +28,7 @@
                         <tr>
                             <% @game.reviews.each do |review| %>  
                                 <% if !review.content.nil? %>
-                                    <%= link_to review.content,  game_review_path(review) %>
+                                    <%= link_to review.content,  game_review_path(@game, review) %>
                                     <%= review.rating_score %>
                                 <% end %>
                                 <br>
