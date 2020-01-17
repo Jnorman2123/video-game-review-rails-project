@@ -28,7 +28,8 @@
                         <tr>
                             <% @game.reviews.each do |review| %>
                                 <td class="question">
-                                    <%= review.content%>
+                                    <%= review.content %>
+                                    <%= review.rating_score %>
                                 </td>
                             <% end %>
                         </tr>
@@ -40,34 +41,9 @@
             </div>
             <%= form_for @review do |review| %>
                 <%= render partial: '/layouts/review_form', locals: {game_review: review} %>
-                <% review.game_id = @game.id %> 
-                <% review.user_id = current_user.id %>
+                <%= review.hidden_field :game_id, value: @game.id %>
+                <%= review.hidden_field :user_id, value: current_user.id %>
             <% end  %>
-        </div>
-    </div>
-    <div class="pod_split pod_gamespace pod_gamespace_home_mygames">
-        <div class="head">
-            <h2 class="title">User Ratings</h2>
-        </div>
-        <div class="body">
-            <fieldset id="js_mygames_own" class="mygames_section mygames_own" data-name="own" data-type="gamerater" itemscope="">
-                <div class="pod_split gamerater_label">
-                    <div class="subsection-title">Reviewed by:<br>
-                        <div class="rating mygames_stats_own mygames_stat4">
-                            <a href="/switch/189707-the-legend-of-zelda-breath-of-the-wild/stats#own">9606 users</a>
-                        </div>
-                    </div>
-                </div>             
-            </fieldset>
-            <fieldset id="js_mygames_rate" class="mygames_section mygames_rate" data-name="rate" data-type="gamerater" itemscope="">
-                <div class="pod_split gamerater_label">
-                    <div class="subsection-title">Rating:<br>
-                        <div class="rating mygames_stats_rate mygames_stat9">
-                            <a href="/switch/189707-the-legend-of-zelda-breath-of-the-wild/stats#rate">4.58 / 5</a>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
         </div>
     </div>
 </div>

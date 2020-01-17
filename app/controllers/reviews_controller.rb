@@ -10,11 +10,7 @@ class ReviewsController < ApplicationController
 
     def create 
         @review = Review.create(review_params)
-        if @review.save 
-            redirect_to game_path(@review) 
-        else 
-            redirect_to new_review_path
-        end 
+        redirect_to game_path(@review)
     end 
 
     def show 
@@ -36,6 +32,6 @@ class ReviewsController < ApplicationController
     private 
 
     def review_params 
-        params.require(:reviews).permit(:content, :rating, :game_id, :user_id)
+        params.require(:review).permit(:content, :rating, :game_id, :user_id)
     end 
 end 
