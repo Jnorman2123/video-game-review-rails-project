@@ -3,7 +3,7 @@
     <%= f.text_field :title %> 
     <br>
     <%= f.fields_for :consoles do |console_fields| %>
-        <%= console_fields.label "Select Existing Console" %>
+        <%= console_fields.label "Select Console" %>
         <%= console_fields.select(:name , options_from_collection_for_select(@consoles, 'name', 'name'), { include_blank: ""}) %>
         <br>
     <% end %>

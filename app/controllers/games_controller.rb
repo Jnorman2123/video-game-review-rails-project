@@ -54,7 +54,6 @@ class GamesController < ApplicationController
             :release_date,
             consoles_attributes: [
                 :name,
-                :id
             ]
         )
     end 
