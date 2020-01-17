@@ -14,4 +14,8 @@ class Review < ApplicationRecord
     def rating_score 
         "RATING #{self.rating} out of 10." if !self.rating.nil?
     end 
+
+    def created_by 
+        "Created by user: #{self.user.username}"
+    end 
 end

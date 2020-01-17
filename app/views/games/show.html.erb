@@ -26,11 +26,10 @@
                 <table class="qna_table qresults board">
                     <tbody>
                         <tr>
-                            <% @game.reviews.each do |review| %>
-                                <td class="question">
-                                    <%= review.content %>
-                                    <%= review.rating_score %>
-                                </td>
+                            <% @game.reviews.each do |review| %>   
+                                <%= review.content %>
+                                <%= review.rating_score %>
+                                <br>
                             <% end %>
                         </tr>
                     </tbody>

@@ -1,6 +1,10 @@
 <h1>Review Index</h1> 
 
 <% @reviews.each do |review| %>
+    <div class="header_left">
+        <%= image_tag review.game.img_url %>
+    </div>
     <%= review.content %> 
-    <%= review.user.username %>
+    <%= review.rating_score %>
+    <%= review.created_by %>
 <% end %>

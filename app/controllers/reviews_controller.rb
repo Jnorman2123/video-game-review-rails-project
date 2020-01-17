@@ -9,8 +9,9 @@ class ReviewsController < ApplicationController
     end 
 
     def create 
+        binding.pry
         @review = Review.create(review_params)
-        redirect_to game_path(@review)
+        redirect_to game_path(@review.game_id)
     end 
 
     def show 

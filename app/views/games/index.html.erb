@@ -1,5 +1,8 @@
 <h1>Game Index</h1> 
 
 <% @games.each do |game| %> 
+    <div class="header_left">
+        <%= image_tag game.img_url %>
+    </div>
     <%= link_to game.title, game_path(game) %><br>
 <% end %>
