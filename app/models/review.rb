@@ -12,9 +12,9 @@ class Review < ApplicationRecord
     end 
 
     def rating_score 
-        "RATING #{self.rating} out of 10." if !self.rating.nil?
+        "RATING #{self.rating} out of 10."
     end 
-
+    
     def created_by 
         "Created by user: #{self.user.username}"
     end 

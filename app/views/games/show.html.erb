@@ -26,9 +26,11 @@
                 <table class="qna_table qresults board">
                     <tbody>
                         <tr>
-                            <% @game.reviews.each do |review| %>   
-                                <%= review.content %>
-                                <%= review.rating_score %>
+                            <% @game.reviews.each do |review| %>  
+                                <% if !review.content.nil? %>
+                                    <%= link_to review.content,  game_review_path(review) %>
+                                    <%= review.rating_score %>
+                                <% end %>
                                 <br>
                             <% end %>
                         </tr>

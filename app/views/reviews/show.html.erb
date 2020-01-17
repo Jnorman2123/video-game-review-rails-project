@@ -1,3 +1,20 @@
-<h1>Review</h1> 
-
-<%= @review.content %>
+<div class="header_left">
+    <%= image_tag @review.game.img_url %>
+</div>
+<div class="header_right">
+    <h1 class="page-title"><%= @review.game.title %></h1>
+</div>
+<div class="pod">
+    <div class="head">
+        <h2 class="title">Review</h2>
+    </div>
+    <div class="body">
+        <table class="qna_table qresults board">
+            <tbody>
+                <tr>
+                    <%= @review.content %>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
