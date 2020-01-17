@@ -18,7 +18,7 @@
                     &nbsp;&nbsp
                     <%= @review.user.username %>
                     &nbsp;&nbsp
-                    <%= link_to "Edit Review", edit_game_review_path(@review) %>
+                    <%= link_to "Edit Review", edit_game_review_path(@review.game_id, @review) %>
                     &nbsp;&nbsp
                     <%= link_to 'Delete Review', game_review_path(@review.game_id, @review), data: {:confirm => 'Are you sure?'}, :method => :delete %>
                 </tr>
