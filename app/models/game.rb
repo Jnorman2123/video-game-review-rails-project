@@ -16,6 +16,9 @@ class Game < ApplicationRecord
                 end 
             end 
         end 
+    end   
+
+    def show_release_date 
+        self.release_date.strftime('%b, %d, %Y')
     end 
-    
 end

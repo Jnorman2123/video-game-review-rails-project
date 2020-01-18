@@ -1,61 +1,35 @@
-<div class="span8">
-    <header class="page-header">
-        <div class="header_split">
-            <div class="header_left">
-                <%= image_tag @game.img_url %>
-            </div>
-            <div class="header_right">
-                <h1 class="page-title"><%= @game.title %></h1>
-                <h3 class="platform-title">                
-                    <span class="header_more" style="cursor: pointer">
-                        <% @game.consoles.each do |console| %> 
-                            <%= console.name %>
-                        <% end %>
-                    </span>
-                </h3>
-            </div>
-        </div>
-    </header>
-<div class="pod">
-    <div class="pod_split pod_gamespace pod_gamespace_home_mygames">
-        <div class="pod">
-            <div class="head">
-                <h2 class="title">Most Recent Reviews</h2>
-            </div>
-            <div class="body">
-                <table class="qna_table qresults board">
-                    <tbody>
-                        <tr>
-                            <% @game.reviews.each do |review| %>  
-                                <% if !review.content.nil? %>
-                                    <%= link_to review.content,  game_review_path(@game, review) %>
-                                    <br>
-                                    <%= review.rating_score %>
-                                    <br>
-                                    <% if current_user.admin %> 
-                                        <%= link_to "Edit Review", edit_game_review_path(review.game_id, review) %>
-                                        &nbsp;&nbsp
-                                        <%= link_to 'Delete Review', game_review_path(review.game_id, review), data: {:confirm => 'Are you sure?'}, :method => :delete %>
-                                    <% end %>
-                                <% end %>
-                                <br>
-                            <% end %>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="head">
-                <h2 class="title">Write a new review for this game</h2>
-            </div>
-            <%= form_for @review do |review| %>
-                <%= render partial: '/layouts/review_form', locals: {game_review: review} %>
-                <%= review.hidden_field :game_id, value: @game.id %>
-                <%= review.hidden_field :user_id, value: current_user.id %>
-            <% end  %>
-        </div>
-    </div>
-</div>
-
+<%= image_tag @game.img_url %>
+<h1><%= @game.title %></h1>
+<% @game.consoles.each do |console| %> 
+    <h3><%= console.name %></h3>
+<% end %>
+<br>
+<h4>Genres: <%= @game.genre %></h4>
+<br>
+<h4>Release Date: <%= @game.show_release_date %></h4>
+<br>
+<h2>Reviews</h2>
+<% @game.reviews.each do |review| %>  
+    <% if !review.content.nil? %>
+        <%= link_to review.content,  game_review_path(@game, review) %>
+        <br>
+        <%= review.rating_score %>
+        <br>
+        <% if current_user.admin %> 
+            <%= link_to "Edit Review", edit_game_review_path(review.game_id, review) %>
+            &nbsp;&nbsp
+            <%= link_to 'Delete Review', game_review_path(review.game_id, review), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+        <% end %>
+    <% end %>
+    <br>
+<% end %>
+<h2>Write a new review for this game</h2>
+<%= form_for @review do |review| %>
+    <%= render partial: '/layouts/review_form', locals: {game_review: review} %>
+    <%= review.hidden_field :game_id, value: @game.id %>
+    <%= review.hidden_field :user_id, value: current_user.id %>
+<% end  %>
+<br>
 <% if current_user.admin %>
     <%= link_to "Edit Game", edit_game_path(@game) %> 
     &nbsp;&nbsp

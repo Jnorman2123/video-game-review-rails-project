@@ -23,6 +23,9 @@ class GamesController < ApplicationController
     end 
 
     def edit 
+        @game_consoles = @game.consoles.all 
+        @consoles = Console.all
+        3.times {@game.consoles.build}
     end 
 
     def update 
