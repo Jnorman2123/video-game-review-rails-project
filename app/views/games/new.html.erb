@@ -2,7 +2,7 @@
 
 <%= form_for @game do |game| %>  
     <%= game.label :title %>
-    <%= game.text_field :title %> 
+    <%= game.text_field :title%> 
     <br>
     <%= game.fields_for :consoles do |console_fields| %>
         <%= console_fields.label "Select Console" %>

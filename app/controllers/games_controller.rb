@@ -19,14 +19,14 @@ class GamesController < ApplicationController
             redirect_to game_path(@game)
         else 
             game_errors
-            redirect_to new_game_path 
+            @consoles = Console.all
+            2.times {@game.consoles.build}
+            render :new 
         end 
     end 
 
     def edit 
-        @game_consoles = @game.consoles.all 
-        @consoles = Console.all
-        3.times {@game.consoles.build}
+   
     end 
 
     def update 
@@ -34,7 +34,7 @@ class GamesController < ApplicationController
             redirect_to game_path(@game)
         else 
             game_errors
-            redirect_to edit_game_path(@game)
+            render :edit
         end 
     end  
 

@@ -15,7 +15,9 @@ class ReviewsController < ApplicationController
             redirect_to game_path(@review.game_id)
         else 
             review_errors
-            redirect_to game_path(@review.game_id)
+            binding.pry
+            @game = Game.find_by_id(@review.game_id)
+            render "/games/show"
         end 
     end 
 
@@ -26,7 +28,7 @@ class ReviewsController < ApplicationController
         if current_user.admin || current_user == @review.user
             
         else
-            flash[:notice] = "Only Admins or the Owner of the review can edit it."
+            flash[:notice] = "Only Admins or the Owner of the review can edit a review."
             redirect_to game_review_path(@review)
         end 
     end 
@@ -36,7 +38,7 @@ class ReviewsController < ApplicationController
             redirect_to game_path(@review.game_id)
         else 
             review_errors 
-            redirect_to edit_game_review_path(@review)
+            render :edit
         end
     end 
     
