@@ -1,52 +1,44 @@
 class GamesController < ApplicationController 
-
+    before_action :not_admin, only: [:new, :create, :edit]
+    before_action :set_game_or_invalid, only: [:edit, :update, :show, :destroy]
     def index 
         @games = Game.all 
     end 
 
     def new 
-        not_admin
         @game = Game.new
         @consoles = Console.all
         3.times {@game.consoles.build}
     end 
 
     def create 
-        not_admin
         @game = Game.create(game_params)
 
         if @game.save 
             redirect_to game_path(@game)
         else 
+            game_errors
             redirect_to new_game_path 
         end 
     end 
 
     def edit 
-        not_admin 
-        @game = set_game ? @game = set_game : invalid_game
-        binding.pry
     end 
 
     def update 
-        @game = set_game 
         if @game.update(game_params)
             redirect_to game_path(@game)
         else 
+            game_errors
             redirect_to edit_game_path(@game)
         end 
     end  
 
     def show 
-        if @game = set_game
-            @review = @game.reviews.new
-        else 
-            invalid_game
-        end 
+        @review = @game.reviews.new
     end  
 
-    def destroy 
-        @game = set_game 
+    def destroy  
         @reviews = @game.reviews
         @reviews.each do |review|
             review.destroy
@@ -84,5 +76,13 @@ class GamesController < ApplicationController
             redirect_to root_path 
             return
         end 
+    end 
+
+    def set_game_or_invalid 
+        @game = set_game ? @game = set_game : invalid_game
+    end 
+
+    def game_errors 
+        flash[:notice] = "#{@game.errors.full_messages.first}"
     end 
 end 
