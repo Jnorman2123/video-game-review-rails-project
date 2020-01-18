@@ -22,7 +22,9 @@ class ReviewsController < ApplicationController
     end 
 
     def edit 
-        if !current_user.admin || current_user != @review.user
+        if current_user.admin || current_user == @review.user
+            
+        else
             flash[:notice] = "Only Admins or the Owner of the review can edit it."
             redirect_to game_review_path(@review)
         end 

@@ -8,7 +8,7 @@
     &nbsp;&nbsp
     <%= review.rating_score %>
     &nbsp;&nbsp
-    <%= review.created_by %>
+    <%= link_to review.created_by, user_path(review.user) %>
     &nbsp;&nbsp
     <% if current_user.admin %> 
         <%= link_to "Edit Review", edit_game_review_path(review.game_id, review) %>

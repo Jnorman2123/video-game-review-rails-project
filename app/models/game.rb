@@ -21,4 +21,14 @@ class Game < ApplicationRecord
     def show_release_date 
         self.release_date.strftime('%b, %d, %Y')
     end 
+
+    def average_rating 
+        scores = []
+        self.reviews.each do |review| 
+            scores << review.rating
+        end 
+        total_score = scores.inject(0){ |sum, x| sum + x}
+        num_of_reviews = self.reviews.count 
+        total_score / num_of_reviews   
+    end 
 end
