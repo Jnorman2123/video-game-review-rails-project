@@ -16,6 +16,7 @@ class GamesController < ApplicationController
         @game = Game.create(game_params)
 
         if @game.save 
+            success_message("Game", "created")
             redirect_to game_path(@game)
         else 
             game_errors
@@ -31,6 +32,7 @@ class GamesController < ApplicationController
 
     def update 
         if @game.update(game_params)
+            success_message("Game", "edited")
             redirect_to game_path(@game)
         else 
             game_errors
@@ -48,6 +50,7 @@ class GamesController < ApplicationController
             review.destroy
         end
         @game.delete
+        success_message("Game", "deleted")
         redirect_to games_path
     end 
 

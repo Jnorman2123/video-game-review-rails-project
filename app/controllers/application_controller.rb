@@ -12,4 +12,7 @@ class ApplicationController < ActionController::Base
         end 
     end 
 
+    def success_message(object, action) 
+        flash[:notice] = "#{object} successfully #{action}."
+    end 
 end

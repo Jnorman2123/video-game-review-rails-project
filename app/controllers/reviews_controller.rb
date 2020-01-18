@@ -12,10 +12,10 @@ class ReviewsController < ApplicationController
     def create 
         @review = Review.create(review_params)
         if @review.save
+            success_message("Review", "created")
             redirect_to game_path(@review.game_id)
         else 
             review_errors
-            binding.pry
             @game = Game.find_by_id(@review.game_id)
             render "/games/show"
         end 
@@ -35,6 +35,7 @@ class ReviewsController < ApplicationController
 
     def update 
         if @review.update(review_params)
+            success_message("Review", "edited")
             redirect_to game_path(@review.game_id)
         else 
             review_errors 
@@ -44,6 +45,7 @@ class ReviewsController < ApplicationController
     
     def destroy 
         @review.delete 
+        success_message("Review", "deleted")
         redirect_to game_path(@review.game)
     end 
 
