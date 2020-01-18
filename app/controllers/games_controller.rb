@@ -5,12 +5,20 @@ class GamesController < ApplicationController
     end 
 
     def new 
+        if !current_user.admin
+            flash[:notice] = "Only Admins can access that page."
+            redirect_to root_path
+        end 
         @game = Game.new
         @consoles = Console.all
         3.times {@game.consoles.build}
     end 
 
     def create 
+        if !current_user.admin
+            flash[:notice] = "Only Admins can access that page."
+            redirect_to root_path
+        end 
         @game = Game.create(game_params)
 
         if @game.save 
@@ -21,12 +29,20 @@ class GamesController < ApplicationController
     end 
 
     def edit 
+        if !current_user.admin
+            flash[:notice] = "Only Admins can access that page."
+            redirect_to root_path
+        end 
         @game = set_game
         @consoles = Console.all
         3.times {@game.consoles.build}
     end 
 
     def update 
+        if !current_user.admin
+            flash[:notice] = "Only Admins can access that page."
+            redirect_to root_path
+        end 
         @game = set_game 
         if @game.update(game_params)
             redirect_to game_path(@game)
@@ -41,6 +57,10 @@ class GamesController < ApplicationController
     end  
 
     def destroy 
+        if !current_user.admin
+            flash[:notice] = "Only Admins can access that page."
+            redirect_to root_path
+        end 
         @game = set_game 
         @reviews = @game.reviews
         @reviews.each do |review|

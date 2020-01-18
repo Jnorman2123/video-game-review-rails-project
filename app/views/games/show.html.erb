@@ -29,6 +29,7 @@
                             <% @game.reviews.each do |review| %>  
                                 <% if !review.content.nil? %>
                                     <%= link_to review.content,  game_review_path(@game, review) %>
+                                    <br>
                                     <%= review.rating_score %>
                                     <br>
                                     <% if current_user.admin %> 
