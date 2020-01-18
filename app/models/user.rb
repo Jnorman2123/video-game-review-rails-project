@@ -16,8 +16,5 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end 
 
-    def not_admin 
-      errors.add(:admin, :false, message: "Only admins can access that page.") if admin.false
-    end 
   end 
 end

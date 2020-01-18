@@ -5,20 +5,14 @@ class GamesController < ApplicationController
     end 
 
     def new 
-        if !current_user.admin
-            flash[:notice] = "Only Admins can access that page."
-            redirect_to root_path
-        end 
+        not_admin
         @game = Game.new
         @consoles = Console.all
         3.times {@game.consoles.build}
     end 
 
     def create 
-        if !current_user.admin
-            flash[:notice] = "Only Admins can access that page."
-            redirect_to root_path
-        end 
+        not_admin
         @game = Game.create(game_params)
 
         if @game.save 
@@ -29,13 +23,9 @@ class GamesController < ApplicationController
     end 
 
     def edit 
-        if !current_user.admin
-            flash[:notice] = "Only Admins can access that page."
-            redirect_to root_path
-        end 
-        @game = set_game
-        @consoles = Console.all
-        3.times {@game.consoles.build}
+        not_admin 
+        @game = set_game ? @game = set_game : invalid_game
+        binding.pry
     end 
 
     def update 
@@ -48,8 +38,11 @@ class GamesController < ApplicationController
     end  
 
     def show 
-        @game = set_game
-        @review = @game.reviews.new
+        if @game = set_game
+            @review = @game.reviews.new
+        else 
+            invalid_game
+        end 
     end  
 
     def destroy 
@@ -77,6 +70,19 @@ class GamesController < ApplicationController
     end 
 
     def set_game 
-        Game.find(params[:id])
+        Game.find_by_id(params[:id])
+    end 
+
+    def invalid_game
+        flash[:notice] = "That game does not exist."
+        redirect_to games_path 
+    end 
+
+    def not_admin 
+        if !current_user.admin
+            flash[:notice] = "Only Admins can access that page."
+            redirect_to root_path 
+            return
+        end 
     end 
 end 

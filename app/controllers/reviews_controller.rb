@@ -14,11 +14,11 @@ class ReviewsController < ApplicationController
     end 
 
     def show 
-        @review = Review.find_by(params[:id])
+        @review = Review.find(params[:id])
     end 
 
     def edit 
-        @review = Review.find_by(params[:id])
+        @review = Review.find(params[:id])
         if !current_user.admin || current_user != @review.user
             flash[:notice] = "Only Admins or the Owner of the review can edit it."
             redirect_to game_review_path(@review)
@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
     end 
 
     def update 
-        @review = Review.find_by(params[:id])
+        @review = Review.find(params[:id])
         if @review.update(review_params)
             redirect_to game_path(@review.game_id)
         else 
@@ -35,8 +35,9 @@ class ReviewsController < ApplicationController
     end 
     
     def destroy 
+        @review = Review.find(params[:id])
         @review.delete 
-        redirect_to game_path(@review.game_id) 
+        redirect_to game_path(@review.game)
     end 
 
     private 
