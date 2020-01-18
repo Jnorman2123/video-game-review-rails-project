@@ -19,6 +19,10 @@ class ReviewsController < ApplicationController
 
     def edit 
         @review = Review.find_by(params[:id])
+        if !current_user.admin || current_user != @review.user
+            flash[:notice] = "Only Admins or the Owner of the review can edit it."
+            redirect_to game_review_path(@review)
+        end 
     end 
 
     def update 
@@ -31,7 +35,6 @@ class ReviewsController < ApplicationController
     end 
     
     def destroy 
-        @review = Review.find_by(params[:id])
         @review.delete 
         redirect_to game_path(@review.game_id) 
     end 

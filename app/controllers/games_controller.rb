@@ -39,10 +39,6 @@ class GamesController < ApplicationController
     end 
 
     def update 
-        if !current_user.admin
-            flash[:notice] = "Only Admins can access that page."
-            redirect_to root_path
-        end 
         @game = set_game 
         if @game.update(game_params)
             redirect_to game_path(@game)
@@ -57,10 +53,6 @@ class GamesController < ApplicationController
     end  
 
     def destroy 
-        if !current_user.admin
-            flash[:notice] = "Only Admins can access that page."
-            redirect_to root_path
-        end 
         @game = set_game 
         @reviews = @game.reviews
         @reviews.each do |review|
