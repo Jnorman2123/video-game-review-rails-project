@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController 
     before_action :set_review_or_invalid, only: [:show, :edit, :update, :destroy]
+    before_action :must_be_logged_in, only: [:index, :show, :new, :edit]
     def index 
         @reviews = Review.all
     end 

@@ -1,6 +1,7 @@
 class GamesController < ApplicationController 
     before_action :not_admin, only: [:new, :create, :edit]
     before_action :set_game_or_invalid, only: [:edit, :update, :show, :destroy]
+    before_action :must_be_logged_in, only: [:index, :show, :new, :edit]
     def index 
         @games = Game.all 
     end 
@@ -88,4 +89,5 @@ class GamesController < ApplicationController
     def game_errors 
         flash[:notice] = "#{@game.errors.full_messages.first}"
     end 
+    
 end 

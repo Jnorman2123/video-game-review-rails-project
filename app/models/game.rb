@@ -29,6 +29,8 @@ class Game < ApplicationRecord
         end 
         total_score = scores.inject(0){ |sum, x| sum + x}
         num_of_reviews = self.reviews.count 
-        total_score / num_of_reviews   
+        average = total_score / num_of_reviews.to_f 
+        average.round(2)  
     end 
+
 end
