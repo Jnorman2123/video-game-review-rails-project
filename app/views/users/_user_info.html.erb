@@ -1,0 +1,5 @@
+<% all_users.each do |u| %> 
+    <%= link_to u.username, user_path(u)%>
+    <%= reviews_posted(u) %>
+    <br>
+<% end %>

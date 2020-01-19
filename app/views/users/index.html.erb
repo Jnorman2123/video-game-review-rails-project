@@ -1,18 +1,7 @@
 <h1>Admins Index</h1>
 
-<% @admins.each do |admin| %> 
-    <%= link_to admin.username, user_path(admin)%>
-    <%= reviews_posted(admin) %>
-    <br>
-<% end %>
+<%= render partial: 'user_info', locals: {all_users: @admins} %>
 
 <h1>Users Index</h1> 
 
-<% @users.each do |user| %> 
-    <%= link_to user.username, user_path(user)%>
-    <%= reviews_posted(user) %>
-    <% if user.admin %>
-        <p>*Admin*</p>
-    <% end %>
-    <br>
-<% end %>
+<%= render partial: 'user_info', locals: {all_users: @users} %>
