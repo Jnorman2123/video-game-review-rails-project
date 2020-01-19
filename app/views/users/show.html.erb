@@ -1,17 +1,6 @@
 <h1><%= @user.username + "'s Show Page" %></h1>
 
 <% @reviews.each do |review| %>
-    <div class="header_left">
-        <%= image_tag review.game.img_url %>
-    </div>
-    <%= link_to review.content,  game_review_path(review.game_id, review) %>
-    &nbsp;&nbsp
-    <%= review.rating_score %>
-    &nbsp;&nbsp
-    <% if current_user == review.user || current_user.admin %> 
-        <%= link_to "Edit Review", edit_game_review_path(review.game_id, review) %>
-        &nbsp;&nbsp
-        <%= link_to 'Delete Review', game_review_path(review.game_id, review), data: {:confirm => 'Are you sure?'}, :method => :delete %>
-    <% end %>
+    <%= render partial: '/reviews/review_info', locals: {review: review} %>
     <br>
 <% end %>
