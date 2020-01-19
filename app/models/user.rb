@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :reviews 
   has_many :games, through: :reviews
   scope :is_admin, -> { where(admin: true)}
+  scope :not_admin, -> { where(admin: false)}
 
   def self.from_omniauth(auth) 
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user| 
@@ -19,7 +20,11 @@ class User < ApplicationRecord
   end 
 
   def self.user_admins 
-    self.all.is_admin.each 
+    self.all.is_admin
+  end 
+
+  def self.user_non_admins
+    self.all.not_admin
   end 
 
 end

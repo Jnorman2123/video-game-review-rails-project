@@ -1,7 +1,8 @@
 class UsersController < ApplicationController 
     before_action :must_be_logged_in, only: [:index, :show]
     def index 
-        @users = User.all 
+        @users = User.user_non_admins
+        @admins = User.user_admins
     end 
 
     def show 
