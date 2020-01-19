@@ -25,7 +25,7 @@ class Game < ApplicationRecord
     def average_rating 
         scores = []
         self.reviews.each do |review| 
-            scores << review.rating
+            scores << review.rating unless review.rating.nil?
         end 
         total_score = scores.inject(0){ |sum, x| sum + x}
         num_of_reviews = self.reviews.count 

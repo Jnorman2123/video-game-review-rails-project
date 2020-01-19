@@ -4,6 +4,7 @@ class Review < ApplicationRecord
     validates :content, presence: true, length: {maximum: 250}
     validates :rating, presence: true, numericality: {only_integer: true}
     validate :rating_values
+    scope :high_rating, -> { where("rating >= 8")}
 
     def rating_values 
         if rating < 0 || rating > 10 

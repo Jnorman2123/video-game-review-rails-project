@@ -8,6 +8,8 @@
 <br>
 <h4>Release Date: <%= @game.show_release_date %></h4>
 <br>
+<h4>Overall Score: <%= @game.average_rating %></h4>
+<br>
 <h2>Reviews</h2>
 <% @game.reviews.each do |review| %>  
     <% if !review.content.nil? %>
@@ -20,6 +22,7 @@
             &nbsp;&nbsp
             <%= link_to 'Delete Review', game_review_path(review.game_id, review), data: {:confirm => 'Are you sure?'}, :method => :delete %>
         <% end %>
+        <br>
     <% end %>
     <br>
 <% end %>

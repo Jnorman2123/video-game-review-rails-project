@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable
   has_many :reviews 
   has_many :games, through: :reviews
+  scope :is_admin, -> { where(admin: true)}
 
   def self.from_omniauth(auth) 
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user| 
@@ -14,7 +15,11 @@ class User < ApplicationRecord
       user.uid = auth.uid 
       user.email = auth.info.email 
       user.password = Devise.friendly_token[0,20]
-    end 
-
+    end
   end 
+
+  def self.user_admins 
+    self.all.is_admin.each 
+  end 
+
 end
