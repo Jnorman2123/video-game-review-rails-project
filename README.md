@@ -5,20 +5,9 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.6.1
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Once you have cloned the repo from github you will need to run bundle install to update the gemfile.
+Type rails s in the terminal to start the localhost. 
+In the web browser bar type localhost:3000 to get to the homepage of the app.
+From here new users can sign up with an email and password or via github or existing users can log in with email and password or github.
