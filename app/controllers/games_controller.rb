@@ -1,9 +1,13 @@
 class GamesController < ApplicationController 
-    before_action :not_admin, only: [:new, :create, :edit]
+    before_action :not_admin, only: [:new, :create, :edit, :update, :destroy]
     before_action :set_game_or_invalid, only: [:edit, :update, :show, :destroy]
     before_action :must_be_logged_in, only: [:index, :show, :new, :edit]
     def index 
-        @games = Game.all 
+        if params[:title]
+            @games = Game.where('title LIKE ?', "%#{params[:title]}%")
+        else
+            @games = Game.all 
+        end 
     end 
 
     def new 
@@ -13,7 +17,7 @@ class GamesController < ApplicationController
     end 
 
     def create 
-        @game = Game.create(game_params)
+        @game = Game.new(game_params)
 
         if @game.save 
             success_message("Game", "created")

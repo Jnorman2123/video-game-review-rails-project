@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController 
     before_action :set_review_or_invalid, only: [:show, :edit, :update, :destroy]
-    before_action :must_be_logged_in, only: [:index, :show, :new, :edit]
+    before_action :must_be_logged_in
     def index 
         @reviews = Review.all
     end 
@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     end 
 
     def create 
-        @review = Review.create(review_params)
+        @review = Review.new(review_params)
         if @review.save
             success_message("Review", "created")
             redirect_to game_path(@review.game_id)

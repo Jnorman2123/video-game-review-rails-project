@@ -1,5 +1,11 @@
 <h1>Game Index</h1> 
-
+<br>
+<h2>Search for games by title</h2>
+<%= form_tag games_path, method: "get" do %>
+    <%= text_field_tag :title, params[:title] %>
+    <%= submit_tag 'Search', name: nil %>
+<% end %>
+<br>
 <% @games.each do |game| %> 
     <div class="header_left">
         <%= image_tag game.img_url %>
